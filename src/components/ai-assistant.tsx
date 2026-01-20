@@ -254,25 +254,32 @@ Puedo ayudarte con información sobre:
 }
 
 export function AIAssistant() {
+  const [mounted, setMounted] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const [isMinimized, setIsMinimized] = useState(false)
-  const [messages, setMessages] = useState<Message[]>([
-    {
+  const [messages, setMessages] = useState<Message[]>([])
+  const [input, setInput] = useState("")
+  const [isTyping, setIsTyping] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  // Only render on client to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+    setMessages([{
       id: "welcome",
       role: "assistant",
       content: "¡Hola! Soy el asistente técnico de Tecozam. Puedo ayudarte con información sobre nuestras máquinas de ferralla:\n\n- **Estribadora Automática MEA-3000**\n- **Dobladora de Ferralla DF-500**\n\n¿En qué puedo ayudarte hoy?",
       timestamp: new Date()
-    }
-  ])
-  const [input, setInput] = useState("")
-  const [isTyping, setIsTyping] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
+    }])
+  }, [])
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
   }, [messages])
+
+  if (!mounted) return null
 
   const handleSend = async (text?: string) => {
     const messageText = text || input
