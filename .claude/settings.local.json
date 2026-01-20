@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(echo:*)",
+      "Bash(python3 -c \"\nimport json\n\nwith open\\(''$HOME/.claude.json'', ''r''\\) as f:\n    config = json.load\\(f\\)\n\n# Add Mind MCP server to current project\nproject_key = ''H:/TECOZAM/demo_dashboard''\nif project_key in config.get\\(''projects'', {}\\):\n    config[''projects''][project_key][''mcpServers''][''mind''] = {\n        ''command'': ''python'',\n        ''args'': [''-m'', ''mind.mcp'']\n    }\n    \n    with open\\(''$HOME/.claude.json'', ''w''\\) as f:\n        json.dump\\(config, f, indent=2\\)\n    print\\(''Successfully added Mind MCP server''\\)\nelse:\n    print\\(''Project not found''\\)\n\")",
+      "Bash(python:*)",
+      "WebFetch(domain:ui.shadcn.com)",
+      "WebFetch(domain:play-lh.googleusercontent.com)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npx shadcn@latest init:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(taskkill:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}
