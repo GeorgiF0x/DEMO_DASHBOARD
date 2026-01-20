@@ -382,7 +382,7 @@ export function AIAssistant() {
             {!isMinimized && (
               <>
                 {/* Messages */}
-                <ScrollArea className="flex-1 p-4" ref={scrollRef}>
+                <div className="flex-1 overflow-y-auto p-4" ref={scrollRef} style={{ maxHeight: "400px" }}>
                   <div className="space-y-4">
                     {messages.map((message) => (
                       <motion.div
@@ -465,7 +465,7 @@ export function AIAssistant() {
                       </motion.div>
                     )}
                   </div>
-                </ScrollArea>
+                </div>
 
                 {/* Quick Actions */}
                 <div className="p-2 border-t bg-muted/30">
