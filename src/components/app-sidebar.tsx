@@ -145,7 +145,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild tooltip="Configuración">
-              <Link href="/configuracion">
+              <Link href="/settings">
                 <Settings />
                 <span>Configuración</span>
               </Link>
